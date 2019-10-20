@@ -1,74 +1,25 @@
-Beancoin integration/staging tree
-================================
+Beancoin is just a clone of SmallChange which is a clone of Litecoin. This coin is created for fun and to learn and experiment. Do not use this for anything serious! :-)
 
-http://www.beancoin.org
+If you want to build the wallet on Ubuntu, do the following:
 
-Copyright (c) 2009-2014 Bitcoin Developers
-Copyright (c) 2011-2014 Beancoin Developers
+install dependencies
+sudo apt-get update
 
-What is Beancoin?
-----------------
+sudo apt-get install build-essential libboost-all-dev libcurl4-openssl-dev libdb5.3-dev libdb5.3++-dev git qt-sdk libminiupnpc-dev libssl-dev
 
-Beancoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
+clone this repo
+git clone https://github.com/zackedelman/beancoin-live.git
 
-The rest is the same as Bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
+build the wallet
+qmake "USE_UPNP=-"
 
-For more information, as well as an immediately useable, binary version of
-the Beancoin client sofware, see http://www.beancoin.org.
+make
 
-License
--------
+add seed nodes (were not included in the source code)
+in your home folder in .Funcoin, create Funcoin.conf and add the following:
 
-Beancoin is released under the terms of the MIT license. See `COPYING` for more
-information or see http://opensource.org/licenses/MIT.
+addnode=95.85.15.176
 
-Development process
--------------------
+addnode=95.85.8.14
 
-Developers work in their own trees, then submit pull requests when they think
-their feature or bug fix is ready.
-
-If it is a simple/trivial/non-controversial change, then one of the Beancoin
-development team members simply pulls it.
-
-If it is a *more complicated or potentially controversial* change, then the patch
-submitter will be asked to start a discussion with the devs and community.
-
-The patch will be accepted if there is broad consensus that it is a good thing.
-Developers should expect to rework and resubmit patches if the code doesn't
-match the project's coding conventions (see `doc/coding.txt`) or are
-controversial.
-
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/beancoin-project/beancoin/tags) are created
-regularly to indicate new official, stable release versions of Beancoin.
-
-Testing
--------
-
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test. Please be patient and help out, and
-remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-### Automated Testing
-
-Developers are strongly encouraged to write unit tests for new code, and to
-submit new unit tests for old code.
-
-Unit tests for the core code are in `src/test/`. To compile and run them:
-
-    cd src; make -f makefile.unix test
-
-Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
-
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
-    make -f Makefile.test
-    ./beancoin-qt_test
-
-# beancoin
+Note: not guaranteed the nodes will be there :-)
