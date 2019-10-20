@@ -1,0 +1,9 @@
+Building Beancoin
+
+See doc/readme-qt.rst for instructions on building Beancoin-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Beancoin.
+
+See doc/build-*.txt for instructions on building beancoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of Beancoin.
